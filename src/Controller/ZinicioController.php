@@ -14,7 +14,6 @@ class ZinicioController extends AbstractController
     public function index(): Response
     {
         return $this->render('zinicio/index.html.twig', [
-            'controller_name' => 'ZinicioController',
         ]);
     }
 }
