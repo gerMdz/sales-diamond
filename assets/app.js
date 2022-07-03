@@ -13,4 +13,5 @@ import './bootstrap';
 
 import $ from 'jquery';
 global.$ = $;
+// import { Tooltip, Toast, Popover } from 'bootstrap';
 import 'bootstrap'
