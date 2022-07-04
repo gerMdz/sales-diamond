@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cambiar su clave{% endblock %}
+
+{% block body %}
+    {% for flash_error in app.flashes('reset_password_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+    <h1>Cambiar su clave</h1>
+
+    {{ form_start(requestForm) }}
+        {{ form_row(requestForm.email) }}
+        <div>
+            <small>
+                Introduce tu dirección de correo electrónico y te enviaremos un
+                enlace para restablecer su contraseña.
+            </small>
+        </div>
+
+        <button class="btn btn-primary">Enviar correo electrónico de restablecimiento de contraseña</button>
+    {{ form_end(requestForm) }}
+{% endblock %}

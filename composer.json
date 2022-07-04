@@ -10,7 +10,9 @@
         "doctrine/doctrine-bundle": "^2.7",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.12",
+        "phpunit/phpunit": "^9.5",
         "sensio/framework-extra-bundle": "^6.2",
+        "stof/doctrine-extensions-bundle": "^1.7",
         "symfony/console": "5.4.*",
         "symfony/dotenv": "5.4.*",
         "symfony/flex": "^1.17|^2",
@@ -25,6 +27,7 @@
         "symfony/validator": "5.4.*",
         "symfony/webpack-encore-bundle": "^1.14",
         "symfony/yaml": "5.4.*",
+        "symfonycasts/reset-password-bundle": "^1.13",
         "symfonycasts/verify-email-bundle": "^1.10"
     },
     "config": {
@@ -78,6 +81,7 @@
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.4",
         "symfony/maker-bundle": "^1.43",
+        "symfony/phpunit-bridge": "^6.1",
         "symfony/stopwatch": "5.4.*",
         "symfony/web-profiler-bundle": "5.4.*"
     }

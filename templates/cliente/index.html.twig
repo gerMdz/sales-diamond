@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cliente listado{% endblock %}
+
+{% block body %}
+    <h1>Cliente listado</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Razón_social</th>
+                <th>Dirección</th>
+                <th>Teléfono</th>
+                <th>email</th>
+                <th>Cuit</th>
+                <th><i class="fa fa-cogs"></i> </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cliente in clientes %}
+            <tr>
+                <td>{{ cliente.id }}</td>
+                <td>{{ cliente.razonSocial }}</td>
+                <td>{{ cliente.address }}</td>
+                <td>{{ cliente.phone }}</td>
+                <td>{{ cliente.emial }}</td>
+                <td>{{ cliente.cuit }}</td>
+                <td>
+                    <a href="{{ path('app_cliente_show', {'id': cliente.id}) }}">Ver</a>
+                    <a href="{{ path('app_cliente_edit', {'id': cliente.id}) }}">Editar</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">No se encontraron clientes</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_cliente_new') }}">Crear nuevo cliente</a>
+{% endblock %}

@@ -33,6 +33,7 @@
                     Has iniciado sesión {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Salir</a>
                 </div>
             {% endif %}
+
             <img class="mb-4 mx-auto" src="{{ asset('images/image-back.jpg') }}" alt="" width="72" height="57">
             <h1 class="h3 mb-3 fw-normal">Por favor inicie sesión</h1>
             <div class="form-floating">
@@ -67,5 +68,10 @@
                 Ingresar
             </button>
         </form>
+
+        <div class="mb-3">
+            Ha olvidado su clave? <a href="{{ path('app_forgot_password_request') }}">Restablecer</a>
+        </div>
+
     </main>
 {% endblock %}

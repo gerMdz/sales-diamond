@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Item presupuesto ver{% endblock %}
+
+{% block body %}
+    <h1>Item presupuesto ver</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ item_budget.id }}</td>
+            </tr>
+            <tr>
+                <th>Costo</th>
+                <td>{{ item_budget.costo }}</td>
+            </tr>
+            <tr>
+                <th>Unidad medida</th>
+                <td>{{ item_budget.unidadCosto }}</td>
+            </tr>
+            <tr>
+                <th>Cantidad</th>
+                <td>{{ item_budget.cantidadCosto }}</td>
+            </tr>
+            <tr>
+                <th>Excedentes</th>
+                <td>{{ item_budget.excendentes }}</td>
+            </tr>
+            <tr>
+                <th>Excedentes costo</th>
+                <td>{{ item_budget.excedentesCosto }}</td>
+            </tr>
+            <tr>
+                <th>Observación</th>
+                <td>{{ item_budget.observacion }}</td>
+            </tr>
+            <tr>
+                <th>Creado</th>
+                <td>{{ item_budget.createdAt ? item_budget.createdAt|date('d-m-Y H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Actualizado</th>
+                <td>{{ item_budget.updatedAt ? item_budget.updatedAt|date('d-m-Y H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_item_budget_index') }}">Listado</a>
+
+    <a href="{{ path('app_item_budget_edit', {'id': item_budget.id}) }}">Editar</a>
+
+    {{ include('item_budget/_delete_form.html.twig') }}
+{% endblock %}

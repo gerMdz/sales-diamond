@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Item presupuesto nuevo{% endblock %}
+
+{% block body %}
+    <h1>Item presupuesto nuevo</h1>
+
+    {{ include('item_budget/_form.html.twig') }}
+
+    <a href="{{ path('app_item_budget_index') }}">Listado</a>
+{% endblock %}

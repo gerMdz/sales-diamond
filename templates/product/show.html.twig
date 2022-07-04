@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Producto vista{% endblock %}
+
+{% block body %}
+    <h1>Producto vista</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ product.id }}</td>
+            </tr>
+            <tr>
+                <th>Título</th>
+                <td>{{ product.title }}</td>
+            </tr>
+            <tr>
+                <th>Descripción</th>
+                <td>{{ product.description }}</td>
+            </tr>
+            <tr>
+                <th>Identificador</th>
+                <td>{{ product.identifier }}</td>
+            </tr>
+            <tr>
+                <th>Disponible</th>
+                <td>{{ product.isAvailable ? 'Si' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Disponible para la venta</th>
+                <td>{{ product.isForSale ? 'Si' : 'No' }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_product_index') }}">Listado</a>
+
+    <a href="{{ path('app_product_edit', {'id': product.id}) }}">Editar</a>
+
+{#    {{ include('product/_delete_form.html.twig') }}#}
+{% endblock %}

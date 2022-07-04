@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Presupuesto Ver{% endblock %}
+
+{% block body %}
+    <h1>Presupuesto Ver</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ budget.id }}</td>
+            </tr>
+            <tr>
+                <th>Aclaraciones</th>
+                <td>{{ budget.aclaraciones }}</td>
+            </tr>
+            <tr>
+                <th>Cliente confirma</th>
+                <td>{{ budget.clienteConfirma }}</td>
+            </tr>
+            <tr>
+                <th>Total</th>
+                <td>{{ budget.total }}</td>
+            </tr>
+            <tr>
+                <th>Nro presupuesto</th>
+                <td>{{ budget.nroBudget }}</td>
+            </tr>
+            <tr>
+                <th>Creado</th>
+                <td>{{ budget.createdAt ? budget.createdAt|date('d-m-Y H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Actualizado</th>
+                <td>{{ budget.updatedAt ? budget.updatedAt|date('d-m-Y H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_budget_index') }}">Listado</a>
+
+    <a href="{{ path('app_budget_edit', {'id': budget.id}) }}">Editar</a>
+
+{#    {{ include('budget/_delete_form.html.twig') }}#}
+{% endblock %}

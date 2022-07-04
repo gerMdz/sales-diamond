@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cambiar clave{% endblock %}
+
+{% block body %}
+    <h1>Cambiar clave</h1>
+
+    {{ form_start(resetForm) }}
+        {{ form_row(resetForm.plainPassword) }}
+        <button class="btn btn-primary">Cambiar clave</button>
+    {{ form_end(resetForm) }}
+{% endblock %}

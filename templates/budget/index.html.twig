@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Presupuesto Listado{% endblock %}
+
+{% block body %}
+    <h1>Presupuesto Listado</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Aclaraciones</th>
+                <th>Cliente confirma</th>
+                <th>Total</th>
+                <th>Nro Presupuesto </th>
+                <th><i class="fab fa-cogs"></i> </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for budget in budgets %}
+            <tr>
+                <td>{{ budget.id }}</td>
+                <td>{{ budget.aclaraciones }}</td>
+                <td>{{ budget.clienteConfirma }}</td>
+                <td>{{ budget.total }}</td>
+                <td>{{ budget.nroBudget }}</td>
+                <td>{{ budget.createdAt ? budget.createdAt|date('d-m-Y H:i:s') : '' }}</td>
+                <td>{{ budget.updatedAt ? budget.updatedAt|date('d-m-Y H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_budget_show', {'id': budget.id}) }}">Ver</a>
+                    <a href="{{ path('app_budget_edit', {'id': budget.id}) }}">Editar</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">No se encontraron presupuestos </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_budget_new') }}">Crear nuevo presupuesto </a>
+{% endblock %}

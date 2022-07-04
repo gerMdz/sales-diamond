@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cliente edición{% endblock %}
+
+{% block body %}
+    <h1>Cliente edición</h1>
+
+    {{ include('cliente/_form.html.twig', {'button_label': 'Actualizar'}) }}
+
+    <a href="{{ path('app_cliente_index') }}">Listado</a>
+
+{#    {{ include('cliente/_delete_form.html.twig') }}#}
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Usuario ver{% endblock %}
+
+{% block body %}
+    <h1>Usuario ver</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ user.id }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Verificado?</th>
+                <td>{{ user.isVerified ? 'Si' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>FullName</th>
+                <td>{{ user.fullName }}</td>
+            </tr>
+            <tr>
+                <th>Activo?</th>
+                <td>{{ user.isActive ? 'Si' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_user_index') }}">Volver al listado</a>
+
+    <a href="{{ path('app_user_edit', {'id': user.id}) }}">Editar</a>
+
+    {{ include('user/_delete_form.html.twig') }}
+{% endblock %}

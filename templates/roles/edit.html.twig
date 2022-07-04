@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar Roles{% endblock %}
+
+{% block body %}
+    <h1>Editar Roles</h1>
+
+    {{ include('roles/_form.html.twig', {'button_label': 'Actulizar'}) }}
+
+    <a href="{{ path('app_roles_index') }}">Volver al listado</a>
+
+    {{ include('roles/_delete_form.html.twig') }}
+{% endblock %}

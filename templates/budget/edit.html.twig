@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Presupuesto Editar{% endblock %}
+
+{% block body %}
+    <h1>Presupuesto Editar</h1>
+
+    {{ include('budget/_form.html.twig', {'button_label': 'Actualizar'}) }}
+
+    <a href="{{ path('app_budget_index') }}">Listado</a>
+
+{#    {{ include('budget/_delete_form.html.twig') }}#}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Correo electrónico de restablecimiento de contraseña{% endblock %}
+
+{% block body %}
+    <p>
+        Si existe una cuenta que coincide con su correo electrónico, entonces se acaba de enviar un correo electrónico que contiene un enlace que puede usar para restablecer su contraseña.
+        Este enlace caducará en {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
+    </p>
+    <p>Si no recibe un correo electrónico, verifique su carpeta de correo no deseado o <a href="{{ path('app_forgot_password_request') }}">inténtelo nuevamente</a>.</p>
+{% endblock %}

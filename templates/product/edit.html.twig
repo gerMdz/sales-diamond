@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Producto editar{% endblock %}
+
+{% block body %}
+    <h1>Producto editar</h1>
+
+    {{ include('product/_form.html.twig', {'button_label': 'Actualizar'}) }}
+
+    <a href="{{ path('app_product_index') }}">Listado</a>
+
+{#    {{ include('product/_delete_form.html.twig') }}#}
+{% endblock %}

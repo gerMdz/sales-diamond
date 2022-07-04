@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Crear nuevo presupuesto{% endblock %}
+
+{% block body %}
+    <h1>Crear nuevo presupuesto</h1>
+
+    {{ include('budget/_form.html.twig') }}
+
+    <a href="{{ path('app_budget_index') }}">Listado</a>
+{% endblock %}
