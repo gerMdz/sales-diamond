@@ -1,23 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
+        <title>{% block title %}{% endblock %}</title>
+        {% block metas %}
+            <meta charset="UTF-8">
         {% endblock %}
-
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
+        {% block stylesheets %}
         {% endblock %}
     </head>
-    <body>
-    <div class="container body-container">
+    <body {% block bodyclass %}class="" {% endblock %}>
 
+        {% block impersionate %}
+            {% if is_granted('IS_IMPERSONATOR') %}
+            <div class="alert alert-warning" style="margin-bottom: 0;">
+               Ya estas logeado como : {{ app.user.username }}
+                <a href="{{ path('app_admin_index') }}">Ingresar</a>
+            </div>
+            {% endif %}
+        {% endblock %}
         {% block body %}{% endblock %}
+        {% block javascripts %}
 
-    </div>
+        {% endblock %}
     </body>
 </html>

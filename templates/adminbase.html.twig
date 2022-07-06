@@ -1,0 +1,205 @@
+{% extends "base.html.twig" %}
+
+{% block metas %}
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{{ asset('media/favicon.ico') }}" type="image/ico" />
+{% endblock %}
+{% block stylesheets %}
+
+    <!-- Bootstrap -->
+    <link href="{{ asset('vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{{ asset('vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="{{ asset('vendors/nprogress/nprogress.css') }}" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="{{ asset('vendors/iCheck/skins/flat/green.css') }}" rel="stylesheet">
+
+    <!-- bootstrap-progressbar -->
+    <link href="{{ asset('vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css') }}" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="{{ asset('vendors/jqvmap/dist/jqvmap.min.css') }}" rel="stylesheet"/>
+
+    <!-- Custom Theme Style -->
+    <link href="{{ asset('build/css/custom.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('build/css/bootstrap-select.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('build/css/summernote.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('build/css/bootstrap-datepicker3.css') }}" rel="stylesheet">
+    <link href="{{ asset('build/css/responsive.dataTables.min.css') }}" rel="stylesheet">
+    <!-- Datatables -->
+    <link href="{{ asset('vendors/datatables.net-bs/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
+    <!-- PNotify -->
+    <link href="{{ asset('vendors/pnotify/dist/pnotify.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/pnotify/dist/pnotify.buttons.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/pnotify/dist/pnotify.nonblock.css') }}" rel="stylesheet">
+{#    <link href="{{ asset('venta/css/sweetalert.css') }}" rel="stylesheet" type="text/css"/>#}
+    <link href="{{ asset('alertas/css/sweetalert2.min.css') }}" rel="stylesheet" type="text/css"/>
+{#    <link href="{{ asset('venta/css/mdb.min.css') }}" rel="stylesheet">#}
+
+
+
+    <style>
+        body{
+            zoom:90%;
+        }
+        div.fx-button-container {
+            margin-bottom: 12px;
+        }
+
+        div.fx-button-container > form {
+            display: inline;
+        }
+
+        div.fx-button-container button,
+        div.fx-button-container a.btn
+        {
+            margin-right: 10px;
+        }
+
+        .fx-line {
+            margin-top: 3px;
+            margin-bottom: 3px;
+            border-color: #DADADA;
+        }
+    </style>
+{% endblock %}
+
+{% block bodyclass %} class="nav-md" {% endblock %}
+{% block body %}
+
+    <div class="container body">
+        <div class="main_container">
+            {% block bars %}
+
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+
+    <!-- jQuery -->
+    <script src="{{ asset('vendors/jquery/dist/jquery.min.js') }}"></script>
+    <!-- Bootstrap -->
+    <script src="{{ asset('vendors/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+    <!-- FastClick -->
+    <script src="{{ asset('vendors/fastclick/lib/fastclick.js')}}"></script>
+    <!-- NProgress -->
+    <script src="{{ asset('vendors/nprogress/nprogress.js')}}"></script>
+    <!-- Chart.js -->
+    <script src="{{ asset('vendors/Chart.js/dist/Chart.min.js')}}"></script>
+    <!-- gauge.js -->
+    <script src="{{ asset('vendors/gauge.js/dist/gauge.min.js')}}"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="{{ asset('vendors/bootstrap-progressbar/bootstrap-progressbar.min.js')}}"></script>
+    <!-- iCheck -->
+    <script src="{{ asset('vendors/iCheck/icheck.min.js')}}"></script>
+    <!-- Skycons -->
+    <script src="{{ asset('vendors/skycons/skycons.js')}}"></script>
+    <!-- Flot -->
+    <script src="{{ asset('vendors/Flot/jquery.flot.js')}}"></script>
+    <script src="{{ asset('vendors/Flot/jquery.flot.pie.js')}}"></script>
+    <script src="{{ asset('vendors/Flot/jquery.flot.time.js')}}"></script>
+    <script src="{{ asset('vendors/Flot/jquery.flot.stack.js')}}"></script>
+    <script src="{{ asset('vendors/Flot/jquery.flot.resize.js')}}"></script>
+    <!-- Flot plugins -->
+    <script src="{{ asset('vendors/flot.orderbars/js/jquery.flot.orderBars.js')}}"></script>
+    <script src="{{ asset('vendors/flot-spline/js/jquery.flot.spline.min.js')}}"></script>
+    <script src="{{ asset('vendors/flot.curvedlines/curvedLines.js')}}"></script>
+    <!-- DateJS -->
+    <script src="{{ asset('vendors/DateJS/build/date.js')}}"></script>
+    <!-- JQVMap -->
+    <script src="{{ asset('vendors/jqvmap/dist/jquery.vmap.js')}}"></script>
+    <script src="{{ asset('vendors/jqvmap/dist/maps/jquery.vmap.world.js')}}"></script>
+    <script src="{{ asset('vendors/jqvmap/examples/js/jquery.vmap.sampledata.js')}}"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="{{ asset('vendors/moment/min/moment.min.js')}}"></script>
+    <script src="{{ asset('vendors/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="{{ asset('build/js/custom.min.js')}}"></script>
+    <script src="{{ asset('build/js/bootstrap-select.min.js')}}"></script>
+    <script src="{{ asset('build/js/bootstrap-datepicker.min.js')}}"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="{{ asset('vendors/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('vendors/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('build/js/dataTables.responsive.min.js')}}"></script>
+
+    <!-- PNotify -->
+    <script src="{{ asset('vendors/pnotify/dist/pnotify.js') }}"></script>
+    <script src="{{ asset('vendors/pnotify/dist/pnotify.buttons.js') }}"></script>
+    <script src="{{ asset('vendors/pnotify/dist/pnotify.nonblock.js') }}"></script>
+    <!-- Tagsinput -->
+    <script src="{{ asset('vendors/jquery.tagsinput/src/jquery.tagsinput.js') }}"></script>
+    <!-- Summernote -->
+    <script src="{{ asset('build/js/summernote.min.js')}}"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
+
+
+
+{#    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css"/>#}
+{#    <script src="{{ asset('venta/js/sweetalert.js') }}"></script>#}
+{#    <script src="{{ asset('alertas/js/sweetalert2.min.js') }}"></script>#}
+    <script src="{{ asset('alertas/js/sweetalert2@10.js') }}"></script>
+    <script src="{{ asset('alertas/js/polyfill.js') }}"></script>
+    <script src="{{ asset('venta/js/jquery.twbsPagination.min.js') }}"></script>
+
+    {#    <script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>#}
+
+
+    <script>
+        function notif(type,titre,text) {
+            new PNotify({
+                title: titre,
+                text: text,
+                type: type,
+                styling: 'bootstrap4'
+            });
+        }
+        var dataminetables = $('.dataminetables').dataTable({
+            "columnDefs": [
+                {"orderable": false, "targets": 0}
+            ],
+            "language": {
+                "lengthMenu": "Mostrando _MENU_ resultados por pagina",
+                "zeroRecords": "No hay registros en la base de datos",
+                "info": "Mostrando la pagina _PAGE_ de  _PAGES_",
+                "infoEmpty": "Sin resultados validos",
+                "infoFiltered": "(filtered from _MAX_ total records)",
+                "search" : "Buscar",
+                "paginate": {
+                    "first":      "Primero",
+                    "last":       "Ultimo",
+                    "next":       "Siguiente",
+                    "previous":   "Anterior"
+                }
+            }
+        });
+
+        var datasorttables = $('.dataminetables').DataTable();
+
+        var datanotminetables = $('.datanotminetables').dataTable({
+        });
+
+        var datanotsorttables = $('.datanotminetables').DataTable();
+
+        {% block summernote %}
+        $(document).ready(function() {
+            $('.summernote').summernote();
+        });
+        {% endblock  %}
+
+
+
+    </script>
+    {% block javascripts_footer %}
+
+    {% endblock %}
+
+{% endblock %}

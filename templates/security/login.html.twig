@@ -4,6 +4,23 @@
 
 {% block stylesheets %}
     {{ parent() }}
+    <!-- Bootstrap -->
+    <link
+            href="{{ asset('vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link
+            href="{{ asset('vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <!-- NProgress -->
+    <link
+            href="{{ asset('vendors/nprogress/nprogress.css') }}" rel="stylesheet">
+    <!-- Animate -->
+    <link
+            href="{{ asset('vendors/animate.css/animate.css') }}" rel="stylesheet">
+    <!-- iCheck -->
+    <link
+            href="{{ asset('vendors/iCheck/skins/flat/green.css') }}" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="{{ asset('buildfalse/css/custom.min.css') }}" rel="stylesheet">
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -20,9 +37,13 @@
         }
     </style>
 {% endblock %}
-
+{% block bodyclass %}class="login"{% endblock %}
 {% block body %}
-    <main class="form-signin text-center">
+<a class="hiddenanchor" id="signup"></a>
+<a class="hiddenanchor" id="signin"></a>
+<div class="login_wrapper">
+    <div class="animate form login_form">
+        <section class="login_content">
         <form method="post">
             {% if error %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -38,7 +59,7 @@
             <h1 class="h3 mb-3 fw-normal">Por favor inicie sesión</h1>
             <div class="form-floating">
                 <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control"
-                       autocomplete="email" required autofocus >
+                       autocomplete="email" required autofocus>
                 <label for="inputEmail">Email</label>
             </div>
             <div class="form-floating">
@@ -46,7 +67,6 @@
                        autocomplete="current-password" required>
                 <label for="inputPassword">Password</label>
             </div>
-
 
 
             <input type="hidden" name="_csrf_token"
@@ -67,11 +87,33 @@
             <button class="w-100 btn btn-lg btn-primary" type="submit">
                 Ingresar
             </button>
+            <div class="clearfix"></div>
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
         </form>
 
         <div class="mb-3">
             Ha olvidado su clave? <a href="{{ path('app_forgot_password_request') }}">Restablecer</a>
         </div>
+            <div class="separator">
 
-    </main>
+
+                <div class="clearfix"></div>
+                <br/>
+
+                <div>
+                    <p>
+                        <img class="fa " src="{{ asset('images/image-back.jpg') }}" alt="logo" width="36" height="28">
+
+                    </p>
+                </div>
+            </div>
+
+
+        </section>
+    </div>
+
+    {% endblock %}
+    {% block javascripts %}
 {% endblock %}

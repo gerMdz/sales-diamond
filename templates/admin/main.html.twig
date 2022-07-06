@@ -1,0 +1,15 @@
+{% extends "admin/bars.html.twig" %}
+
+{% block contenpage %}
+    <h1>INICIO</h1>
+    {% set user = app.user %}
+    <div class="row">
+        {% if user.lastLogin %}
+            <p class="lead">Tu última visita fue
+                el {{ user.lastLogin |format_datetime('full', 'short') }}.</p>
+        {% else %}
+            <p class="lead">¡Es la primera vez que nos visitas!</p>
+
+        {% endif %}
+    </div>
+{% endblock %}

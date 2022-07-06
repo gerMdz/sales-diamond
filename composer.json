@@ -22,13 +22,16 @@
         "symfony/proxy-manager-bridge": "5.4.*",
         "symfony/runtime": "5.4.*",
         "symfony/security-bundle": "5.4.*",
+        "symfony/translation": "5.4.*",
         "symfony/twig-bundle": "5.4.*",
         "symfony/uid": "5.4.*",
         "symfony/validator": "5.4.*",
         "symfony/webpack-encore-bundle": "^1.14",
         "symfony/yaml": "5.4.*",
         "symfonycasts/reset-password-bundle": "^1.13",
-        "symfonycasts/verify-email-bundle": "^1.10"
+        "symfonycasts/verify-email-bundle": "^1.10",
+        "twig/extra-bundle": "^3.4",
+        "twig/intl-extra": "^3.4"
     },
     "config": {
         "allow-plugins": {

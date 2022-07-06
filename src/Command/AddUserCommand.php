@@ -20,7 +20,7 @@ use Symfony\Component\Stopwatch\Stopwatch;
 class AddUserCommand extends Command
 {
     protected static $defaultName = 'app:add-user';
-    protected static $defaultDescription = 'Add a short description for your command';
+    protected static $defaultDescription = 'Crea usuarios. Par agregar un rol se debe agregar --role="ROLE_*"';
 
     /**
      * @var SymfonyStyle

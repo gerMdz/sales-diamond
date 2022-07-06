@@ -16,6 +16,13 @@ use Symfony\Component\Uid\Uuid;
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+
+    //Roles
+    const ROL_ADMIN = 'Administrador';
+    const ROL_SUPERVISOR_VENTAS = 'Jefe Ventas';
+    const ROL_VENTAS = 'Vendedor';
+
+    //end
     /**
      * @ORM\Id
      * @ORM\Column(type="uuid", unique=true)
