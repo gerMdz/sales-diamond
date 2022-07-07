@@ -58,18 +58,10 @@ class FxExtension extends AbstractExtension{
         return '--';
     }
     public function formatRol($rol){
-        $string = $rol;
-        switch ($string){
-            case 'ROLE_ADMIN':
-                return "ADMINISTRADOR";
+//        $rol;
 
-            case 'ROLE_SUPERVISOR_VENTAS':
-                return "Jefe Ventas";
-            case 'ROLE_VENTAS':
-                return "Vendedor";
+//        $roles = array
 
-        }
-        dd($rol);
         return $rol;
     }
 
