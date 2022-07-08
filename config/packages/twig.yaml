@@ -1,5 +1,14 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
+    form_themes:
+        - 'bootstrap_4_layout.html.twig'
+    globals:
+        project_name: '%env(SITE_NAME)%'
+        date_format: 'd-m-Y'
+        short_date_format: 'd/m/Y'
+        long_date_format: 'l j \d\e F \d\e Y'
+        grupo_name: '%env(GRUPO_NAME)%'
+        servidor: '%env(SERVIDOR)%'
 
 when@test:
     twig:
