@@ -1,12 +1,13 @@
 {% extends "base.html.twig" %}
 
 {% block metas %}
+    {{ parent() }}
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="{{ asset('ima') }}" type="image/ico" />
+{#    <link rel="icon" href="{{ asset('ima') }}" type="image/ico" />#}
 {% endblock %}
 {% block stylesheets %}
 

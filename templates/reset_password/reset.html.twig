@@ -1,12 +1,18 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminbase.html.twig' %}
 
 {% block title %}Cambiar clave{% endblock %}
 
-{% block body %}
-    <h1>Cambiar clave</h1>
+{% block bars %}
+    <div class="login_wrapper">
+        <div class="form login_form">
+            <section class="login_content">
+                <h1>Cambiar clave</h1>
 
-    {{ form_start(resetForm) }}
-        {{ form_row(resetForm.plainPassword) }}
-        <button class="btn btn-primary">Cambiar clave</button>
-    {{ form_end(resetForm) }}
+                {{ form_start(resetForm) }}
+                {{ form_row(resetForm.plainPassword) }}
+                <button class="btn btn-primary">Cambiar clave</button>
+                {{ form_end(resetForm) }}
+            </section>
+        </div>
+    </div>
 {% endblock %}
