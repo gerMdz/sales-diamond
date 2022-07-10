@@ -1,0 +1,12 @@
+App\Entity\Product:
+  attributes:
+    id:
+      groups: ['product_read']
+    title:
+      groups: ['product_read']
+    description:
+      groups: ['product_read']
+    identifier:
+      groups: ['product_read']
+#    imageFilename:
+#      groups: ['product_read']

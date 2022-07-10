@@ -34,6 +34,7 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
+        - { path: ^/sales-diamond/api/v1, roles: PUBLIC_ACCESS, ip: 127.0.0.1 }
         - { path: ^/ventas/cliente, roles: ROLE_VENTAS }
         - { path: ^/ventas/producto, roles: ROLE_VENTAS }
         - { path: ^/admin/roles, roles: ROLE_SUPERVISOR_VENTAS }

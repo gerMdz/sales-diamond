@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Item presupuesto Listado{% endblock %}
+
+{% block body %}
+    <h1>Item presupuesto Listado</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Costo</th>
+            <th>Unidad medida</th>
+            <th>Cantidad</th>
+            <th>Excedentes</th>
+            <th>Excedentes costo</th>
+            <th>Observación</th>
+            <th>Creado</th>
+            <th>Actualizado</th>
+            <th><i class="fa fa-cogs"></i></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item_budget in item_budgets %}
+            <tr>
+                <td>{{ item_budget.id }}</td>
+                <td>{{ item_budget.costo }}</td>
+                <td>{{ item_budget.unidadCosto }}</td>
+                <td>{{ item_budget.cantidadCosto }}</td>
+                <td>{{ item_budget.excendentes }}</td>
+                <td>{{ item_budget.excedentesCosto }}</td>
+                <td>{{ item_budget.observacion }}</td>
+                <td>{{ item_budget.createdAt ? item_budget.createdAt|date('d-m-Y H:i:s') : '' }}</td>
+                <td>{{ item_budget.updatedAt ? item_budget.updatedAt|date('d-m-Y H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_item_budget_show', {'id': item_budget.id}) }}">Ver</a>
+                    <a href="{{ path('app_item_budget_edit', {'id': item_budget.id}) }}">Editar</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">No se encontraron Items</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {{ dump(products) }}
+
+    {#    <a href="{{ path('app_item_budget_new') }}">Create new</a> #}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        window.products= {{ products|json }};
+    </script>
+{% endblock %}

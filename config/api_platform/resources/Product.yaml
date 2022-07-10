@@ -1,0 +1,42 @@
+App\Entity\Product:
+  attributes:
+    normalization_context:
+      groups: ['product_read']
+    desnormalization_context:
+      groups: ['adapter_read']
+
+  collectionOperations:
+    get_products:
+      method: GET
+      path: /product/forSales
+      controller: App\Action\Post\ForSales
+      deserialize: false
+      normalization_context:
+        groups: ['product_read']
+      openapi_context:
+        summary: Muestra los productos disponibles para la venta con stock
+        responses:
+          200:
+            description: OK
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    title:
+                      type: string
+                    slug:
+                      type: string
+
+  itemOperations:
+    get:
+      method: GET
+      deserialize: false
+      normalization_context:
+        groups: ['product_read']
+      openapi_context:
+        summary: Muestra un producto
+
+
+#      security: is_granted("product_read", object)
+

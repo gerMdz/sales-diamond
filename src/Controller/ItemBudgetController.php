@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\ItemBudget;
 use App\Form\ItemBudgetType;
 use App\Repository\ItemBudgetRepository;
+use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,6 +23,21 @@ class ItemBudgetController extends AbstractController
     {
         return $this->render('item_budget/index.html.twig', [
             'item_budgets' => $itemBudgetRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/prebudget", name="app_item_budget_prebudget", methods={"GET"})
+     * @param ItemBudgetRepository $itemBudgetRepository
+     * @param ProductRepository $productRepository
+     * @return Response
+     */
+    public function preBudget(ItemBudgetRepository $itemBudgetRepository, ProductRepository $productRepository): Response
+    {
+
+        return $this->render('item_budget/list-pre-budget.html.twig', [
+            'item_budgets' => $itemBudgetRepository->findAll(),
+            'products' => $productRepository->findBy(['isAvailable' => true, 'isForSale' => true])
         ]);
     }
 
