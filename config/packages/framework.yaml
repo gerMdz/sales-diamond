@@ -16,6 +16,10 @@ framework:
     #fragments: true
     php_errors:
         log: true
+    serializer:
+        mapping:
+            path:
+                - '%kernel.project_dir%/config/api_platform/serializer'
 
 when@test:
     framework:

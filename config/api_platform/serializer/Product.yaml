@@ -8,5 +8,3 @@ App\Entity\Product:
       groups: ['product_read']
     identifier:
       groups: ['product_read']
-#    imageFilename:
-#      groups: ['product_read']

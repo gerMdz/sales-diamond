@@ -53,7 +53,6 @@ class Product
     private $isForSale;
 
     /**
-     * @var string|null
      *
      * @Gedmo\Blameable(on="create")
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
@@ -168,17 +167,17 @@ class Product
     }
 
     /**
-     * @return string|null
+     * @return User|null
      */
-    public function getCreatedBy(): ?string
+    public function getCreatedBy(): ?User
     {
         return $this->createdBy;
     }
 
     /**
-     * @return string|null
+     * @return User|null
      */
-    public function getUpdatedBy(): ?string
+    public function getUpdatedBy(): ?User
     {
         return $this->updatedBy;
     }

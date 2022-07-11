@@ -21,6 +21,9 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+    App\Action\:
+        resource: '../src/Action'
+        tags: [ 'controller.service_arguments' ]
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

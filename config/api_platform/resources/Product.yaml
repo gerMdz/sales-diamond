@@ -3,13 +3,13 @@ App\Entity\Product:
     normalization_context:
       groups: ['product_read']
     desnormalization_context:
-      groups: ['adapter_read']
+      groups: ['product_read']
 
   collectionOperations:
     get_products:
       method: GET
       path: /product/forSales
-      controller: App\Action\Post\ForSales
+      controller: App\Action\Product\ProductsForSale
       deserialize: false
       normalization_context:
         groups: ['product_read']
@@ -19,13 +19,11 @@ App\Entity\Product:
           200:
             description: OK
             content:
-              application/json:
+              application/ld+json:
                 schema:
                   type: object
                   properties:
                     title:
-                      type: string
-                    slug:
                       type: string
 
   itemOperations:

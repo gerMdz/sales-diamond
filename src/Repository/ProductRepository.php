@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -37,6 +38,24 @@ class ProductRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function getQueryProductsForSales(): QueryBuilder
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.isAvailable = :val')
+            ->andWhere('p.isForSale = :val')
+            ->setParameter('val', true)
+            ->orderBy('p.id', 'ASC')
+        ;
+
+    }
+
+    public function getProductsForSales(): QueryBuilder
+    {
+        return $this->getQueryProductsForSales()
+            ->orderBy('p.title', 'ASC')
+            ;
     }
 
 //    /**
