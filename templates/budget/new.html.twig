@@ -9,6 +9,9 @@
 
 {% block contenpage %}
     <h1>Crear nuevo presupuesto</h1>
+    <div class="me">
+        <a href="{{ path('app_cliente_new') }}" > Crear cliente</a>
+    </div>
 
     {{ include('budget/_form.html.twig') }}
 

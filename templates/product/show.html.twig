@@ -1,16 +1,18 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/bars.html.twig' %}
 
 {% block title %}Producto vista{% endblock %}
 
-{% block body %}
+{% block contenpage %}
     <h1>Producto vista</h1>
 
     <table class="table">
         <tbody>
+        {% if(is_granted('ROLE_SUPERVISOR_VENTAS')) %}
             <tr>
                 <th>Id</th>
                 <td>{{ product.id }}</td>
             </tr>
+        {% endif %}
             <tr>
                 <th>Título</th>
                 <td>{{ product.title }}</td>
@@ -36,8 +38,9 @@
     </table>
 
     <a href="{{ path('app_product_index') }}">Listado</a>
-
+    {% if(is_granted('ROLE_SUPERVISOR_VENTAS')) %}
     <a href="{{ path('app_product_edit', {'id': product.id}) }}">Editar</a>
+    {% endif %}
 
 {#    {{ include('product/_delete_form.html.twig') }}#}
 {% endblock %}

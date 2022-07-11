@@ -36,8 +36,10 @@ class ClienteController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $clienteRepository->add($cliente, true);
-
-            return $this->redirectToRoute('app_cliente_index', [], Response::HTTP_SEE_OTHER);
+            if($this->isGranted('ROLE_SUPERVISOR_VENTAS')) {
+                return $this->redirectToRoute('app_cliente_index', [], Response::HTTP_SEE_OTHER);
+            }
+            return $this->redirectToRoute('app_admin_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('cliente/new.html.twig', [

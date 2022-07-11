@@ -29,8 +29,11 @@
                 <td>{{ product.createdAt ? product.createdAt|date('d-m-Y H:i:s') : '' }}</td>
                 <td>{{ product.updatedAt ? product.updatedAt|date('d-m-Y H:i:s') : '' }}</td>
                 <td>
+
                     <a href="{{ path('app_product_show', {'id': product.id}) }}">Ver</a>
+                    {% if(is_granted('ROLE_SUPERVISOR_VENTAS')) %}
                     <a href="{{ path('app_product_edit', {'id': product.id}) }}">Editar</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
