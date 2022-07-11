@@ -89,6 +89,11 @@ class Cliente
         $this->budgets = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+     return $this->razon_social;
+    }
+
     public function getId(): ?Uuid
     {
         return $this->id;

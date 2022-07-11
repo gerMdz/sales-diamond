@@ -31,7 +31,7 @@
         {% block impersionate %}
             {% if is_granted('IS_IMPERSONATOR') %}
             <div class="alert alert-warning" style="margin-bottom: 0;">
-               Ya estas logeado como : {{ app.user.username }}
+               Ha ingresado como : {{ app.user.fullName }}
                 <a href="{{ path('app_admin_index') }}">Ingresar</a>
             </div>
             {% endif %}

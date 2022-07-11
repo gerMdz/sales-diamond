@@ -2,16 +2,77 @@
 
 {% block contenpage %}
     <section class="text-center">
-    <h1>{{ project_name }}</h1>
-    <div class="row">
-        {% if(app.user) %}
-            {% if app.user.lastLogin %}
-                <p class="lead">Tu última visita fue
-                    el {{ user.lastLogin |format_datetime('full', 'short') }}.</p>
-            {% else %}
-                <p class="lead">¡Es la primera vez que nos visitas!</p>
+        <h1>{{ project_name }}</h1>
+        <div class="row">
+            {#        {% if(app.user) %} #}
+            {#            {% if app.user. %} #}
+            {#                <p class="lead">Tu última visita fue #}
+            {#                    el {{ user.lastLogin |format_datetime('full', 'short') }}.</p> #}
+            {#            {% else %} #}
+            {#                <p class="lead">¡Es la primera vez que nos visitas!</p> #}
+            {#            {% endif %} #}
+            {#        {% endif %} #}
+
+            {% if(is_granted('ROLE_ADMIN')) %}
+                <div class="card col-sm-4 mx-auto">
+                    <div class="card-body">
+                        <h5 class="card-title">Usuarios</h5>
+                        <p class="card-text">Administración de Usuarios</p>
+                        <a href="{{ path('app_user_index') }}" class="btn btn-primary">
+                            Ver clientes
+                        </a>
+                    </div>
+                </div>
+
+
             {% endif %}
-        {% endif %}
-    </div>
+            {% if(is_granted('ROLE_SUPERVISOR_VENTAS')) %}
+                <div class="card col-sm-4 mx-auto">
+                    <div class="card-body">
+                        <h5 class="card-title">Clientes</h5>
+                        <p class="card-text">Administración de Clientes</p>
+                        <a href="{{ path('app_cliente_index') }}" class="btn btn-primary">
+                            Ver clientes
+                        </a>
+                    </div>
+                </div>
+
+                <div class="card col-sm-4 mx-auto">
+                    <div class="card-body">
+                        <h5 class="card-title">Presupuestos</h5>
+                        <p class="card-text">Administración de Presupuestos</p>
+                        <a href="{{ path('app_budget_index') }}" class="btn btn-primary">
+                            Ver presupuestos
+                        </a>
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if(is_granted('ROLE_VENTAS')) %}
+
+                <div class="card col-sm-4 mx-auto">
+                    <div class="card-body">
+                        <h5 class="card-title">Productos</h5>
+                        <p class="card-text">Listado de productos</p>
+                        <a href="{{ path('app_product_index') }}" class="btn btn-primary">
+                            Ver productos
+                        </a>
+                    </div>
+                </div>
+                <div class="card col-sm-4 mx-auto">
+                    <div class="card-body">
+                        <h5 class="card-title"><small class="text-primary">Crear </small> Presupuesto</h5>
+                        <p class="card-text">Crear presupuesto</p>
+                        <a href="{{ path('app_budget_new') }}" class="btn btn-primary">
+                            Crear presupuesto
+                        </a>
+                    </div>
+                </div>
+
+            {% endif %}
+
+
+
+        </div>
     </section>
 {% endblock %}

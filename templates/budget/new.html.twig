@@ -1,11 +1,36 @@
-{% extends 'base.html.twig' %}
+{% extends "admin/bars.html.twig" %}
 
 {% block title %}Crear nuevo presupuesto{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('vendors/select2/dist/css/select2.min.css') }}" rel="stylesheet">
+{% endblock %}
 
-{% block body %}
+
+{% block contenpage %}
     <h1>Crear nuevo presupuesto</h1>
 
     {{ include('budget/_form.html.twig') }}
 
     <a href="{{ path('app_budget_index') }}">Listado</a>
+{% endblock %}
+{% block javascripts %}
+{#    {{ parent()}}#}
+    <script src="{{ asset('vendors/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendors/select2/dist/js/select2.min.js') }}"></script>
+    <script src="{{ asset('vendors/select2/dist/js/i18n/es.js') }}"></script>
+<script>
+    // import Scripts from "../../public/vendors/bootstrap/site/_includes/scripts.html";
+    //
+    // export default {
+    //     components: {Scripts}
+    // }
+    $(document).ready(function() {
+        $('.selection2').select2({
+            placeholder: 'Seleccione por favor',
+            language: "es",
+            allowClear: true
+        });
+    });
+</script>
 {% endblock %}

@@ -43,18 +43,14 @@
                 <li class="nav-item dropdown open" style="padding-left: 15px;">
                     <a class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown"
                        data-toggle="dropdown" aria-expanded="false">
-                        <img src="{{ asset('media/nn.png') }}">
-
+                        <img src="{{ asset('buildfalse/images/nn.png') }}" class="img-responsive" alt="" style="width: 36px; height: 36px">
                         {{ app.user.fullName }}<br>
 {#                        {{ app.user.roles | format_rol }}#}
-
-                        {{ app.user.roles|join(', ') }}
-
-
+{#                        {{ app.user.roles|join(', ') }}#}
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ path('app_admin_changepswd') }}"><i
-                                    class="fa fa-key pull-right"></i>Cambiar contraseña</a>
+{#                        <a class="dropdown-item" href="{{ path('app_admin_changepswd') }}"><i#}
+{#                                    class="fa fa-key pull-right"></i>Cambiar contraseña</a>#}
                         <a class="dropdown-item" href="{{ path('app_logout') }}"><i
                                     class="fa fa-sign-out pull-right"></i>Salir</a>
                     </div>

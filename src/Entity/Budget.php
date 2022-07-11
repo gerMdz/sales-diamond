@@ -6,6 +6,7 @@ use App\Repository\BudgetRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\GeneratedValue;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Uid\Uuid;
@@ -84,10 +85,14 @@ class Budget
     private $total;
 
     /**
-     * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $nro_budget;
+    private ?int $nro_budget;
+
+    /**
+     * @ORM\OneToOne(targetEntity=NroFactura::class, mappedBy="budget", cascade={"persist", "remove"})
+     */
+    private $nroFactura;
 
     public function __construct()
     {
@@ -231,10 +236,32 @@ class Budget
         return $this->nro_budget;
     }
 
-//    public function setNroBudget(int $nro_budget): self
-//    {
-//        $this->nro_budget = $nro_budget;
-//
-//        return $this;
-//    }
+    public function setNroBudget(int $nro_budget): self
+    {
+        $this->nro_budget = $nro_budget;
+
+        return $this;
+    }
+
+    public function getNroFactura(): ?NroFactura
+    {
+        return $this->nroFactura;
+    }
+
+    public function setNroFactura(?NroFactura $nroFactura): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($nroFactura === null && $this->nroFactura !== null) {
+            $this->nroFactura->setBudget(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($nroFactura !== null && $nroFactura->getBudget() !== $this) {
+            $nroFactura->setBudget($this);
+        }
+
+        $this->nroFactura = $nroFactura;
+
+        return $this;
+    }
 }

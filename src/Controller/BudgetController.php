@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Budget;
+use App\Entity\NroFactura;
 use App\Form\BudgetType;
 use App\Repository\BudgetRepository;
+use App\Repository\NroFacturaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,16 +30,39 @@ class BudgetController extends AbstractController
     /**
      * @Route("/new", name="app_budget_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, BudgetRepository $budgetRepository): Response
+    public function new(Request $request, BudgetRepository $budgetRepository, NroFacturaRepository $nroFacturaRepository): Response
     {
         $budget = new Budget();
         $form = $this->createForm(BudgetType::class, $budget);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+
+            $nroFactura = new NroFactura();
+
+            $nroFacturaRepository->add($nroFactura, true);
+
+            $budget->setNroBudget($nroFactura->getId());
+
+            $budget->setNroFactura($nroFactura);
+            $productos = $form->get('productos')->getData();
+foreach ($productos as $producto){
+    $budget->addProducto($producto);
+}
+
+
+
+
+
             $budgetRepository->add($budget, true);
 
-            return $this->redirectToRoute('app_budget_index', [], Response::HTTP_SEE_OTHER);
+            $nroFactura->setBudget($budget);
+            $nroFacturaRepository->add($nroFactura, true);
+            if($this->isGranted('ROLE_SUPERVISOR_VENTAS')) {
+                return $this->redirectToRoute('app_budget_index', [], Response::HTTP_SEE_OTHER);
+            }
+            return $this->redirectToRoute('app_budget_show', ['id' => $budget->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('budget/new.html.twig', [
