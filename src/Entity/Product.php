@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use phpDocumentor\Reflection\Types\This;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Uid\Uuid;
 
@@ -48,9 +49,9 @@ class Product
     private $identifier;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true, )
      */
-    private $isForSale;
+    private bool $isForSale = false;
 
     /**
      *
@@ -62,7 +63,6 @@ class Product
     protected $createdBy;
 
     /**
-     * @var string|null
      *
      * @Gedmo\Blameable(on="update")
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
@@ -88,6 +88,16 @@ class Product
      * @ORM\OneToMany(targetEntity=ItemBudget::class, mappedBy="producto")
      */
     private $itemBudgets;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $valueForSale;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $unidad_venta;
 
     public function __construct()
     {
@@ -243,6 +253,30 @@ class Product
                 $itemBudget->setProducto(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getValueForSale(): ?int
+    {
+        return $this->valueForSale;
+    }
+
+    public function setValueForSale(?int $valueForSale): self
+    {
+        $this->valueForSale = $valueForSale;
+
+        return $this;
+    }
+
+    public function getUnidadVenta(): ?string
+    {
+        return $this->unidad_venta;
+    }
+
+    public function setUnidadVenta(?string $unidad_venta): self
+    {
+        $this->unidad_venta = $unidad_venta;
 
         return $this;
     }

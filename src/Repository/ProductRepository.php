@@ -51,10 +51,15 @@ class ProductRepository extends ServiceEntityRepository
 
     }
 
-    public function getProductsForSales(): QueryBuilder
+    /**
+     * @return float|int|mixed|string
+     */
+    public function getProductsForSales()
     {
         return $this->getQueryProductsForSales()
             ->orderBy('p.title', 'ASC')
+            ->getQuery()
+            ->getResult()
             ;
     }
 

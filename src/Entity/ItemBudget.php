@@ -93,6 +93,11 @@ class ItemBudget
      */
     protected $contentChangedBy;
 
+    public function __toString()
+    {
+     return $this->producto->title;
+    }
+
     public function getId(): ?Uuid
     {
         return $this->id;

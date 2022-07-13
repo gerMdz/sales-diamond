@@ -6,9 +6,11 @@ use App\Entity\Product;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Range;
 
 class ProductType extends AbstractType
 {
@@ -42,9 +44,23 @@ class ProductType extends AbstractType
             ])
             ->add('isForSale', CheckboxType::class, [
                 'label' => '¿Disponible para la venta?',
+                'required' => false,
                 'attr' => [
                     'form-control'
                 ]
+            ])
+            ->add('valueForSale', NumberType::class, [
+                'label' => 'Valor de venta',
+                'html5' => true,
+                'required' => false,
+                'attr' => [
+                    'class' => 'form-control',
+                    'min' => 1,
+                ]
+            ])
+            ->add('unidadVenta', TextType::class, [
+                'label' => 'Unidad de venta',
+                'help' => 'x unidad, x metro, x kit'
             ])
         ;
     }

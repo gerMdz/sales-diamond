@@ -1,4 +1,49 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+<div class="my-2">
+{{ form_widget(form.cliente) }}
+</div>
+<div class="col-sm-12">
+    <div class="col-sm-3">
+        Producto
+    </div>
+    <div class="col-sm-1">
+        Unidades
+    </div>
+    <div class="col-sm-2">
+        Costo unitario
+    </div>
+    <div class="col-sm-2">
+        Costo de excedentes
+    </div>
+    <div class="col-sm-3">
+        Observación
+    </div>
+    <div class="col-sm-1">
+
+    </div>
+    <br/>
+    <div class="col-sm-3">
+{{ form_widget(form.productos) }}
+    </div>
+    <div class="col-sm-1">
+    <input type="text" class="form-control ">
+    </div>
+    <div class="col-sm-2">
+        <input type="text" class="form-control" readonly>
+    </div>
+    <div class="col-sm-2">
+        <input type="text" class="form-control ">
+    </div>
+    <div class="col-sm-3">
+        <input type="text" class="form-control ">
+    </div>
+    <div class="col-sm-1">
+        <a href="#" class="js-add-item">
+<i class="fa fa-plus-square fa-2x">   </i>
+        </a>
+    </div>
+</div>
+{{ form_rest(form) }}
+
     <button class="btn btn-primary">{{ button_label|default('Guardar') }}</button>
 {{ form_end(form) }}

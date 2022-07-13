@@ -10,7 +10,7 @@
 {% block contenpage %}
     <h1>Crear nuevo presupuesto</h1>
     <div class="me">
-        <a href="{{ path('app_cliente_new') }}" class="btn btn-info btn-sm" > Crear cliente</a>
+        <a href="{{ path('app_cliente_new') }}" class="btn btn-info btn-sm"> Crear cliente</a>
     </div>
 
     {{ include('budget/_form.html.twig') }}
@@ -18,22 +18,31 @@
     <a href="{{ path('app_budget_index') }}">Listado</a>
 {% endblock %}
 {% block javascripts %}
-{#    {{ parent()}}#}
+    {{ parent() }}
     <script src="{{ asset('vendors/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('vendors/select2/dist/js/select2.min.js') }}"></script>
     <script src="{{ asset('vendors/select2/dist/js/i18n/es.js') }}"></script>
-<script>
-    // import Scripts from "../../public/vendors/bootstrap/site/_includes/scripts.html";
-    //
-    // export default {
-    //     components: {Scripts}
-    // }
-    $(document).ready(function() {
-        $('.selection2').select2({
-            placeholder: 'Seleccione por favor',
-            language: "es",
-            allowClear: true
+    <script>
+        // import Scripts from "../../public/vendors/bootstrap/site/_includes/scripts.html";
+        //
+        // export default {
+        //     components: {Scripts}
+        // }
+        $(document).ready(function () {
+            $('.selection2').select2({
+                placeholder: 'Seleccione por favor',
+                language: "es",
+                allowClear: true,
+                width: '100%',
+            });
+            $('.js-add-item').on('click', function () {
+                console.log('todo delete!');
+            });
+
         });
-    });
-</script>
+
+
+    </script>
+
+    </script>
 {% endblock %}
