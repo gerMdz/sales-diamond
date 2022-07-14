@@ -35,8 +35,17 @@
                 allowClear: true,
                 width: '100%',
             });
-            $('.js-add-item').on('click', function () {
+
+            const $div = $('.js-item-row');
+            $div.find('.js-add-item').on('click', function (e) {
+                e.preventDefault()
                 console.log('todo delete!');
+            });
+            $div.find('div').on('click', function() {
+                console.log('row clicked!');
+            });
+            $div.find('select').on('change', function () {
+                console.log('');
             });
 
         });
