@@ -39,6 +39,19 @@
             const $div = $('.js-item-row');
             $div.find('.js-add-item').on('click', function (e) {
                 e.preventDefault()
+                console.log('todo ');
+                $(this).addClass('text-danger')
+                $(this).find('.fa')
+                    .removeClass('fa-plus-square')
+                    .addClass('fa-spinner')
+                    .addClass('fa-spin')
+                console.log(e.currentTarget === this);
+                // e.target.classname = e.target.classname + ' text-danger';
+
+
+            });
+            $div.find('.js-delete-item').on('click', function (e) {
+                e.preventDefault()
                 console.log('todo delete!');
             });
             $div.find('div').on('click', function() {
