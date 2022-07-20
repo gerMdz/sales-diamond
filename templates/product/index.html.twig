@@ -1,8 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends "admin/bars.html.twig" %}
 
 {% block title %}Productos listado{% endblock %}
 
-{% block body %}
+{% block contenpage %}
     <h1>Productos listado</h1>
 
     <table class="table">
@@ -13,7 +13,10 @@
                 <th>Descripción</th>
                 <th>Identificador</th>
                 <th>Disponible?</th>
-                <th>Disponible para la venta?</th>
+                <th>¿Disponible para la venta?</th>
+                <th>Precio de lista</th>
+                <th>Precio promocional</th>
+                <th>¿Promo vigente?</th>
                 <th><i class="fas fa-cogs"></i> </th>
             </tr>
         </thead>
@@ -26,10 +29,12 @@
                 <td>{{ product.identifier }}</td>
                 <td>{{ product.isAvailable ? 'Si' : 'No' }}</td>
                 <td>{{ product.isForSale ? 'Si' : 'No' }}</td>
-                <td>{{ product.createdAt ? product.createdAt|date('d-m-Y H:i:s') : '' }}</td>
-                <td>{{ product.updatedAt ? product.updatedAt|date('d-m-Y H:i:s') : '' }}</td>
+{#                <td>{{ product.createdAt ? product.createdAt|date('d-m-Y H:i:s') : '' }}</td>#}
+{#                <td>{{ product.updatedAt ? product.updatedAt|date('d-m-Y H:i:s') : '' }}</td>#}
+                <td>{{ product.precioLista }}</td>
+                <td>{{ product.precioPromo }}</td>
+                <td>{{ product.isPromo ? 'Si' : 'No' }}</td>
                 <td>
-
                     <a href="{{ path('app_product_show', {'id': product.id}) }}">Ver</a>
                     {% if(is_granted('ROLE_SUPERVISOR_VENTAS')) %}
                     <a href="{{ path('app_product_edit', {'id': product.id}) }}">Editar</a>

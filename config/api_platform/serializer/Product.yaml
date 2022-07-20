@@ -8,3 +8,9 @@ App\Entity\Product:
       groups: ['product_read']
     identifier:
       groups: ['product_read']
+    precio_lista:
+      groups: ['product_read']
+    precio_promo:
+      groups: ['product_read']
+    isPromo:
+      groups: ['product_read']

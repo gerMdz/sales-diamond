@@ -1,9 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends "admin/bars.html.twig" %}
 
 {% block title %}Producto editar{% endblock %}
 
-{% block body %}
-    <h1>Producto editar</h1>
+{% block contenpage %}
+    <h1>Editar producto</h1>
 
     {{ include('product/_form.html.twig', {'button_label': 'Actualizar'}) }}
 

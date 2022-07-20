@@ -89,6 +89,21 @@ class Product
      */
     private $itemBudgets;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $precio_lista;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $precio_promo;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isPromo;
+
     public function __construct()
     {
         $this->budgets = new ArrayCollection();
@@ -243,6 +258,42 @@ class Product
                 $itemBudget->setProducto(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPrecioLista(): ?float
+    {
+        return $this->precio_lista;
+    }
+
+    public function setPrecioLista(?float $precio_lista): self
+    {
+        $this->precio_lista = $precio_lista;
+
+        return $this;
+    }
+
+    public function getPrecioPromo(): ?float
+    {
+        return $this->precio_promo;
+    }
+
+    public function setPrecioPromo(?float $precio_promo): self
+    {
+        $this->precio_promo = $precio_promo;
+
+        return $this;
+    }
+
+    public function isIsPromo(): ?bool
+    {
+        return $this->isPromo;
+    }
+
+    public function setIsPromo(?bool $isPromo): self
+    {
+        $this->isPromo = $isPromo;
 
         return $this;
     }
