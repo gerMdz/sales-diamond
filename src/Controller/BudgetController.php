@@ -7,6 +7,8 @@ use App\Entity\NroFactura;
 use App\Form\BudgetType;
 use App\Repository\BudgetRepository;
 use App\Repository\NroFacturaRepository;
+use DateTime;
+use Spipu\Html2Pdf\Html2Pdf;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,38 +32,33 @@ class BudgetController extends AbstractController
     /**
      * @Route("/new", name="app_budget_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, BudgetRepository $budgetRepository, NroFacturaRepository $nroFacturaRepository): Response
-    {
+    public function new(
+        Request $request,
+        BudgetRepository $budgetRepository,
+        NroFacturaRepository $nroFacturaRepository
+    ): Response {
         $budget = new Budget();
         $form = $this->createForm(BudgetType::class, $budget);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-
             $nroFactura = new NroFactura();
-
             $nroFacturaRepository->add($nroFactura, true);
-
             $budget->setNroBudget($nroFactura->getId());
-
             $budget->setNroFactura($nroFactura);
             $productos = $form->get('productos')->getData();
-foreach ($productos as $producto){
-    $budget->addProducto($producto);
-}
-
-
-
-
+            foreach ($productos as $producto) {
+                $budget->addProducto($producto);
+            }
 
             $budgetRepository->add($budget, true);
 
             $nroFactura->setBudget($budget);
             $nroFacturaRepository->add($nroFactura, true);
-            if($this->isGranted('ROLE_SUPERVISOR_VENTAS')) {
+            if ($this->isGranted('ROLE_SUPERVISOR_VENTAS')) {
                 return $this->redirectToRoute('app_budget_index', [], Response::HTTP_SEE_OTHER);
             }
+
             return $this->redirectToRoute('app_budget_show', ['id' => $budget->getId()], Response::HTTP_SEE_OTHER);
         }
 
@@ -111,5 +108,36 @@ foreach ($productos as $producto){
         }
 
         return $this->redirectToRoute('app_budget_index', [], Response::HTTP_SEE_OTHER);
+    }
+    
+    /**
+     * @Route("/getPdf/{budget}", name="app_budget_get_pdf", methods={"GET"})
+     */
+    public function generarPdf(Request $request, Budget $budget)
+    {
+        ob_start();
+        $html = $this->renderView('budget/pdf.html.twig',[
+            'presupuesto' => $budget,
+            'actualDate' => new DateTime()
+        ]);
+
+        $html2pdf = new Html2Pdf('P', 'A4', 'es', true, 'UTF-8', array('10', '10', '10', '10'));
+        $html2pdf->pdf->SetDisplayMode('real');
+        $html2pdf->setDefaultFont('helvetica');
+        $html2pdf->writeHTML($html);
+
+        $cadena = 'presupuesto'.$budget->getNroBudget().'.pdf';
+        $originales = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿŔŕ';
+        $modificadas = 'aaaaaaaceeeeiiiidnoooooouuuuybsaaaaaaaceeeeiiiidnoooooouuuyybyRr';
+
+        $cadena = utf8_decode($cadena);
+        $cadena = strtr($cadena, utf8_decode($originales), $modificadas);
+        $cadena = strtoupper($cadena);
+
+        ob_end_clean();
+
+        return new Response($html2pdf->Output(utf8_encode($cadena), 'D'), 200, [
+            'Content-Type' => 'application/pdf;charset=UTF-8'
+        ]);
     }
 }

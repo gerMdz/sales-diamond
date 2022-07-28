@@ -1,0 +1,47 @@
+<style>
+    .text-red{
+        color: red;
+    }
+    .text-blue{
+        color: blue;
+    }
+</style>
+
+<page backtop="25mm" backleft="13mm" backbottom="15mm" backright="18mm">
+    <page_header>
+        <img src='images/image-back.jpg'  style='width: 180px; float: right;' alt='Logo' title='Logo'>
+    </page_header>
+    <page_footer>
+        <h5 class="text-red">{{ actualDate | date('d-m-Y H:i:s') }}</h5>
+    </page_footer>
+
+    <h1 class="text-blue">Presupuesto {{ presupuesto.nroBudget }}</h1>
+    <table>
+        <thead>
+        <tr>
+
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Cuit</th>
+{#            <th>Estado</th>#}
+        </tr>
+        <tr>
+            <th colspan="3"></th>
+        </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>{{ presupuesto.cliente.razonSocial }}</td>
+                <td>{{ presupuesto.cliente.emial }}</td>
+                <td>{{ presupuesto.cliente.cuit }}</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    {{ presupuesto.cliente.address }}
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</page>
