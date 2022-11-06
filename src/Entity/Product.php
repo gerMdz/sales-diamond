@@ -104,6 +104,11 @@ class Product
      */
     private $isPromo;
 
+    /**
+     * @ORM\OneToOne(targetEntity=StockControl::class, mappedBy="producto", cascade={"persist", "remove"})
+     */
+    private $stockControl;
+
     public function __construct()
     {
         $this->budgets = new ArrayCollection();
@@ -294,6 +299,23 @@ class Product
     public function setIsPromo(?bool $isPromo): self
     {
         $this->isPromo = $isPromo;
+
+        return $this;
+    }
+
+    public function getStockControl(): ?StockControl
+    {
+        return $this->stockControl;
+    }
+
+    public function setStockControl(StockControl $stockControl): self
+    {
+        // set the owning side of the relation if necessary
+        if ($stockControl->getProducto() !== $this) {
+            $stockControl->setProducto($this);
+        }
+
+        $this->stockControl = $stockControl;
 
         return $this;
     }
